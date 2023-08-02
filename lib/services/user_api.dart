@@ -17,6 +17,9 @@ class UserApi {
           first: item['name']['first'],
           last: item['name']['last']);
 
+      final location = Location(
+          city: item['location']['city'], country: item['location']['country']);
+
       final thumbnail = Picture(thumbnail: item['picture']['thumbnail']);
 
       return User(
@@ -24,7 +27,8 @@ class UserApi {
           gender: item['gender'],
           nationality: item['nationality'],
           name: name,
-          picture: thumbnail);
+          picture: thumbnail,
+          location: location);
     }).toList();
 
     return users;

@@ -3,9 +3,7 @@ class User {
       {this.id,
       required this.email,
       required this.gender,
-      this.city,
-      this.country,
-      this.state,
+      required this.location,
       this.age,
       this.image,
       this.nationality,
@@ -15,9 +13,7 @@ class User {
   final String? id;
   final String email;
   final String gender;
-  final String? city;
-  final String? country;
-  final String? state;
+  final Location location;
   final int? age;
   final String? image;
   final String? nationality;
@@ -36,6 +32,13 @@ class UserName {
   final String last;
 
   UserName({required this.title, required this.first, required this.last});
+}
+
+class Location {
+  final String city;
+  final String country;
+
+  Location({required this.city, required this.country});
 }
 
 class Picture {
