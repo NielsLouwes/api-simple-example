@@ -9,7 +9,8 @@ class User {
       this.age,
       this.image,
       this.nationality,
-      required this.name, this.picture});
+      required this.name,
+      this.picture});
 
   final String? id;
   final String email;
@@ -22,6 +23,10 @@ class User {
   final String? nationality;
   final UserName? name;
   final Picture? picture;
+
+  String get fullName {
+    return '${name?.first} ${name?.last}';
+  }
 }
 
 //userName is an object in the JSON so we must create a CLASS for it
