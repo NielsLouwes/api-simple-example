@@ -5,7 +5,6 @@ class User {
       required this.gender,
       required this.location,
       this.age,
-      this.image,
       this.nationality,
       required this.name,
       this.picture});
@@ -15,7 +14,6 @@ class User {
   final String gender;
   final Location location;
   final int? age;
-  final String? image;
   final String? nationality;
   final UserName? name;
   final Picture? picture;
@@ -47,4 +45,11 @@ class Picture {
   final String? thumbnail;
 
   Picture({this.large, this.medium, this.thumbnail});
+}
+
+class Age {
+  final String? dateOfBirth;
+  final int age;
+
+  Age({this.dateOfBirth, required this.age});
 }

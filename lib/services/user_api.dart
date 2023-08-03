@@ -20,15 +20,23 @@ class UserApi {
       final location = Location(
           city: item['location']['city'], country: item['location']['country']);
 
-      final thumbnail = Picture(thumbnail: item['picture']['thumbnail']);
+      // final thumbnail = Picture(thumbnail: item['picture']['thumbnail']);
+      final picture = Picture(
+        large: item['picture']['large'],
+        medium: item['picture']['medium'],
+        thumbnail: item['picture']['thumbnail'],
+      );
+      final age = item['dob']['age']
+          as int; // i'm only using age so I can just assign it directly without instantiating a Age class
 
       return User(
           email: item['email'],
           gender: item['gender'],
           nationality: item['nationality'],
           name: name,
-          picture: thumbnail,
-          location: location);
+          picture: picture,
+          location: location,
+          age: age);
     }).toList();
 
     return users;

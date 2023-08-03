@@ -1,4 +1,5 @@
 import 'package:api_simple_example/models/user.dart';
+import 'package:api_simple_example/widgets/employee-info.dart';
 import 'package:flutter/material.dart';
 
 class UserDetailsScreen extends StatelessWidget {
@@ -9,17 +10,36 @@ class UserDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('User Page'),
-        ),
-        body: Column(
+      appBar: AppBar(
+        title: const Text('User Page'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(100),
-              child: Image.network(user.picture!.thumbnail!),
+            Center(
+              child: Card(
+                elevation: 5,
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 30, horizontal: 80),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(100),
+                        child: Image.network(user.picture!.large!),
+                      ),
+                      EmployeeDetails(user: user)
+                    ],
+                  ),
+                ),
+              ),
             ),
-            Text(user.email),
           ],
-        ));
+        ),
+      ),
+    );
   }
 }
