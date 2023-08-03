@@ -15,7 +15,10 @@ class EmployeeDetails extends StatelessWidget {
     return Column(
       children: [
         const SizedBox(height: 20),
-        Text(user.fullName),
+        Text(
+          user.fullName,
+          style: const TextStyle(fontSize: 24),
+        ),
         const SizedBox(height: 15),
         const Text("Work Email"),
         Text(user.email),

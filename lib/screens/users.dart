@@ -13,13 +13,12 @@ class UsersPage extends StatefulWidget {
 }
 
 class _UsersPageState extends State<UsersPage> {
-  List<User> users =
-      []; // create a list that we set equal to the json object results key
+  List<User> users = [];
 
   @override
   void initState() {
     super.initState();
-    fetchUsers(); // This will call fetchUsers when the widget is initialized
+    fetchUsers();
   }
 
   Future<void> fetchUsers() async {
@@ -54,19 +53,22 @@ class _UsersPageState extends State<UsersPage> {
           itemBuilder: ((context, index) {
             final user = users[index];
             final email = user.email;
-            return Card(
-              elevation: 5,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: ListTile(
-                  onTap: () {
-                    _selectEmployee(user);
-                  },
-                  title: Text(user.fullName),
-                  subtitle: Text(email),
-                  leading: ClipRRect(
-                    borderRadius: BorderRadius.circular(100),
-                    child: Image.network(user.picture!.thumbnail!),
+            return InkWell(
+              onTap: () {
+                _selectEmployee(user);
+              },
+              child: Card(
+                elevation: 5,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ListTile(
+                    focusColor: Colors.blue,
+                    title: Text(user.fullName),
+                    subtitle: Text(email),
+                    leading: ClipRRect(
+                      borderRadius: BorderRadius.circular(100),
+                      child: Image.network(user.picture!.thumbnail!),
+                    ),
                   ),
                 ),
               ),
