@@ -16,10 +16,10 @@ For help getting started with Flutter development, view the
 samples, guidance on mobile development, and a full API reference.
 
 ## TODO
-1. Create simple user page
+1. Create simple user page - DONE
 2. Allow us to filter by gender
 3. Filter by Country
-4. Create userPage with additional details
+4. Create userPage with additional details - DONE
   - Full name
   - City, state, country
   - email

@@ -11,7 +11,11 @@ class UserDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('User Page'),
+        title: const Text(
+          'User Page',
+          style: TextStyle(
+              color: Colors.white, fontSize: 26, fontWeight: FontWeight.w500),
+        ),
         backgroundColor: Colors.black,
       ),
       body: Padding(

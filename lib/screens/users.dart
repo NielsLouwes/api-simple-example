@@ -1,6 +1,7 @@
 import 'package:api_simple_example/models/user.dart';
 import 'package:api_simple_example/screens/user-details.dart';
 import 'package:api_simple_example/services/user_api.dart';
+import 'package:api_simple_example/widgets/main-drawer.dart';
 import 'package:flutter/material.dart';
 
 class UsersPage extends StatefulWidget {
@@ -43,9 +44,10 @@ class _UsersPageState extends State<UsersPage> {
         centerTitle: true,
         backgroundColor: Colors.black,
         titleTextStyle: const TextStyle(
-            color: Colors.amber, fontSize: 26, fontWeight: FontWeight.w500),
+            color: Colors.white, fontSize: 26, fontWeight: FontWeight.w500),
         title: const Text('Employee Directory'),
       ),
+      drawer: const MainDrawer(),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         child: ListView.builder(
