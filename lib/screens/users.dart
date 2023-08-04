@@ -16,6 +16,9 @@ class UsersPage extends StatefulWidget {
 class _UsersPageState extends State<UsersPage> {
   List<User> users = [];
 
+  // late final AnimationController _controller;
+  // late final Animation<double> animation;
+
   @override
   void initState() {
     super.initState();
@@ -67,9 +70,13 @@ class _UsersPageState extends State<UsersPage> {
                     focusColor: Colors.blue,
                     title: Text(user.fullName),
                     subtitle: Text(email),
-                    leading: ClipRRect(
-                      borderRadius: BorderRadius.circular(100),
-                      child: Image.network(user.picture!.thumbnail!),
+                    leading: Hero(
+                      tag: user.fullName,
+                      child: Material(
+                        shape: const CircleBorder(),
+                        clipBehavior: Clip.hardEdge,
+                        child: Image.network(user.picture!.thumbnail!),
+                      ),
                     ),
                   ),
                 ),

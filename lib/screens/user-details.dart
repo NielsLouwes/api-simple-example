@@ -34,7 +34,14 @@ class UserDetailsScreen extends StatelessWidget {
                     children: [
                       ClipRRect(
                         borderRadius: BorderRadius.circular(100),
-                        child: Image.network(user.picture!.large!),
+                        child: Hero(
+                          tag: user.fullName,
+                          child: Material(
+                            shape: const CircleBorder(),
+                            clipBehavior: Clip.hardEdge,
+                            child: Image.network(user.picture!.large!),
+                          ),
+                        ),
                       ),
                       EmployeeDetails(user: user)
                     ],
