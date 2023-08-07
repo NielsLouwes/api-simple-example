@@ -16,8 +16,8 @@ class UsersPage extends StatefulWidget {
 class _UsersPageState extends State<UsersPage> {
   List<User> users = [];
 
-  // late final AnimationController _controller;
-  // late final Animation<double> animation;
+  bool _menFilterSet = false;
+  bool _womenFilterSet = false;
 
   @override
   void initState() {
@@ -40,6 +40,18 @@ class _UsersPageState extends State<UsersPage> {
     );
   }
 
+  List<User> get _filteredUsers {
+    if (_menFilterSet && _womenFilterSet) {
+      return users;
+    } else if (_menFilterSet) {
+      return users.where((user) => user.gender == 'male').toList();
+    } else if (_womenFilterSet) {
+      return users.where((user) => user.gender == 'female').toList();
+    } else {
+      return users;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,13 +62,26 @@ class _UsersPageState extends State<UsersPage> {
             color: Colors.white, fontSize: 26, fontWeight: FontWeight.w500),
         title: const Text('Employee Directory'),
       ),
-      drawer: const MainDrawer(),
+      drawer: MainDrawer(
+        menFilterUpdate: (newFilterState) {
+          setState(() {
+            _menFilterSet = newFilterState;
+          });
+        },
+        womenFilterUpdate: (newFilterState) {
+          setState(() {
+            _womenFilterSet = newFilterState;
+          });
+        },
+        menFilterState: _menFilterSet,
+        womenFilterState: _womenFilterSet,
+      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         child: ListView.builder(
-          itemCount: users.length,
+          itemCount: _filteredUsers.length,
           itemBuilder: ((context, index) {
-            final user = users[index];
+            final user = _filteredUsers[index];
             final email = user.email;
             return InkWell(
               onTap: () {
