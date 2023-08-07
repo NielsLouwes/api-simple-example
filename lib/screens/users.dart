@@ -75,6 +75,7 @@ class _UsersPageState extends State<UsersPage> {
         },
         menFilterState: _menFilterSet,
         womenFilterState: _womenFilterSet,
+        getFilteredUsers: () => _filteredUsers, // Pass the getter function here
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
